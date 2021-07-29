@@ -1,18 +1,24 @@
 ﻿using System;
 using UnityEngine.UI;
 
-public class LoadTextEvent : CustomEvent
+namespace CustomEventNamespace
 {
+    public class LoadTextEvent : CustomEvent
+    {
         private TextUIScript TextScript;
         private String TextPath;
 
         public LoadTextEvent(TextUIScript script,String path)
         {
-                TextScript = script;
-                TextPath = path;
+            TextScript = script;
+            TextPath = path;
         }
         public void StartEvent(OnInteract action)
         {
-                TextScript.LoadText(TextPath,action);
+            TextScript.LoadText(TextPath,action);
+            action.SetEventDone();
         }
+    }
+
 }
+
